@@ -6,6 +6,6 @@ huggingface-hub==0.16.4
 Pillow==7.1.0
 scipy==1.7.3
 tokenizers==0.14.1
-torch==2.1.0
+torch==1.13.1
 transformers==4.34.0
 line-bot-sdk==3.5.0
