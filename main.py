@@ -16,6 +16,9 @@ app = Flask(__name__)
 configuration = Configuration(access_token=os.environ['TOKEN'])
 handler = WebhookHandler(os.environ['SECRET'])
 
+@app.route('/')
+def index():
+    return 'running'
 
 @app.route('/callback', methods=['POST'])
 def callback():
