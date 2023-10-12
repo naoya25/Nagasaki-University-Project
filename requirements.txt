@@ -4,7 +4,7 @@ diffusers==0.21.4
 Flask==2.2.5
 huggingface-hub==0.16.4
 Pillow==7.1.0
-scipy==1.11.3
+scipy==1.7.3
 tokenizers==0.14.1
 torch==2.1.0
 transformers==4.34.0
