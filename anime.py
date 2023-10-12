@@ -1,6 +1,3 @@
-# https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/overview
-# https://qiita.com/keisuke-okb/items/527b0faa297514c8c87d
-
 import requests
 import torch
 from PIL import Image
