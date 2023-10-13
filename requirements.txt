@@ -5,7 +5,7 @@ Flask==2.2.5
 huggingface-hub==0.16.4
 Pillow==7.1.0
 scipy==1.7.3
-tokenizers==0.14.1
+tokenizers==0.11.3
 torch==1.13.1
 transformers==4.30.2
 line-bot-sdk==3.1.0
