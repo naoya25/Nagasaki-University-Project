@@ -14,3 +14,6 @@ def create_image(prompt):
     except:
         return False
 
+
+if __name__ == '__main__':
+    create_image('cat')
