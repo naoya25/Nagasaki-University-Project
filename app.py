@@ -3,6 +3,7 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 import os
+from model import create_image
 
 app = Flask(__name__)
 
@@ -25,17 +26,26 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    messages = make_image_message()
-    line_bot_api.reply_message(
-        event.reply_token, messages
-    )
+    text = event.message.text
+    messages = make_image_message(text)
+    if messages:
+        line_bot_api.reply_message(
+            event.reply_token, messages
+        )
+    else:
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text='画像生成に失敗しました')
+        )
 
-def make_image_message():
-    messages = ImageSendMessage(
-        original_content_url="https://hips.hearstapps.com/hmg-prod/images/beautiful-smooth-haired-red-cat-lies-on-the-sofa-royalty-free-image-1678488026.jpg?crop=0.668xw:1.00xh;0.119xw,0&resize=1200:*",
-        preview_image_url="https://hips.hearstapps.com/hmg-prod/images/beautiful-smooth-haired-red-cat-lies-on-the-sofa-royalty-free-image-1678488026.jpg?crop=0.668xw:1.00xh;0.119xw,0&resize=1200:*"
-    )
-    return messages
+def make_image_message(text):
+    if create_image(text):
+        messages = ImageSendMessage(
+            original_content_url='./image.png",
+            preview_image_url='./image.png'
+        )
+        return messages
+    else:
+        return False
 
 
 if __name__ == '__main__':
