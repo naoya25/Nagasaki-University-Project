@@ -40,7 +40,7 @@ def handle_message(event):
 def make_image_message(text):
     if create_image(text):
         messages = ImageSendMessage(
-            original_content_url='./image.png",
+            original_content_url='./image.png',
             preview_image_url='./image.png'
         )
         return messages
