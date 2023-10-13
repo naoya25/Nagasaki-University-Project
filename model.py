@@ -9,10 +9,8 @@ def create_image(prompt):
         _ = pipe(prompt, num_inference_steps=1)
 
         image = pipe(prompt).images[0]
-        image.save('image.png')
+        image.save('./static/image.png')
         return True
     except:
         return False
 
-
-print(create_image('cat'))
