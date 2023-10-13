@@ -29,8 +29,8 @@ def handle_message(event):
     text = event.message.text
     if create_image(text):
         messages = ImageSendMessage(
-            original_content_url='./static/image.png',
-            preview_image_url='./static/image.png'
+            original_content_url='./static/images/image.png',
+            preview_image_url='./static/images/image.png'
         )
         line_bot_api.reply_message(
             event.reply_token, messages
