@@ -14,3 +14,5 @@ def create_image(prompt):
     except:
         return False
 
+
+print(create_image('cat'))

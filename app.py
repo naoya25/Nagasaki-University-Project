@@ -27,26 +27,18 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     text = event.message.text
-    messages = make_image_message(text)
-    if messages:
-        line_bot_api.reply_message(
-            event.reply_token, messages
-        )
-    else:
-        line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text='画像生成に失敗しました')
-        )
-
-def make_image_message(text):
-    if create_image(text):
-        messages = ImageSendMessage(
-            original_content_url='./image.png',
-            preview_image_url='./image.png'
-        )
-        return messages
-    else:
-        return False
-
+    # if create_image(text):
+    messages = ImageSendMessage(
+        original_content_url='./image.png',
+        preview_image_url='./image.png'
+    )
+    line_bot_api.reply_message(
+        event.reply_token, messages
+    )
+    # else:
+    #     line_bot_api.reply_message(
+    #         event.reply_token, TextSendMessage(text='画像生成に失敗しました')
+    #     )
 
 if __name__ == '__main__':
     app.run()
